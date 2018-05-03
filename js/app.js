@@ -20,7 +20,7 @@ class Enemy {
 
     // select a random lane
     randomLane() {
-        let lane = this.lanes[ Math.floor( Math.random() * this.lanes.length ) ];
+        const lane = this.lanes[ Math.floor( Math.random() * this.lanes.length ) ];
         return lane;
     }
     
@@ -29,7 +29,7 @@ class Enemy {
     update( dt ) {
         // calcolate the X position increment multiplyng the enemy speed for the dt parameter
         // in this way the game will run at the same speed on different machines 
-        let incrementX = Number( this.speed ).toFixed( 3 ) * dt;
+        const incrementX = Number( this.speed ).toFixed( 3 ) * dt;
         // the enemy moves
         this.posX += incrementX;
         // call the method to check for collision with the player
@@ -60,7 +60,7 @@ class Enemy {
     // make the enemy reenter the game from the left
     restart() {
         // randomize enemy reenter time
-        let randomPosX = randomRange( -200, -1 );
+        const randomPosX = randomRange( -200, -1 );
         // randomize enemy speed
         this.speed = randomRange( 100, 800 );
         this.posX = randomPosX;
@@ -215,13 +215,13 @@ class Game {
     // initialize the game
     init() {
         // instantiate the player object
-        let player = new Player;
+        const player = new Player;
         // instantiate the three enemies
-        let myFirstEnemy = new Enemy( randomRange( -200, -1 ), 50 );
-        let mySecondEnemy = new Enemy( randomRange( -200, -1 ), 130 );
-        let myThirdEnemy = new Enemy( randomRange( -200, -1 ), 210 );
+        const myFirstEnemy = new Enemy( randomRange( -200, -1 ), 50 );
+        const mySecondEnemy = new Enemy( randomRange( -200, -1 ), 130 );
+        const myThirdEnemy = new Enemy( randomRange( -200, -1 ), 210 );
         // store all enemy objects in an array variable called allEnemies
-        let allEnemies = [];
+        const allEnemies = [];
         allEnemies.push( myFirstEnemy, mySecondEnemy, myThirdEnemy );
         // assign the enemies array and the player object to a global variable,
         // in this way the game engine can access them
@@ -246,7 +246,7 @@ function randomRange( min, max ) {
 function addEventListeners() {
     document.addEventListener( 'keyup', function( e ) {
         e.preventDefault();
-        let allowedKeys = {
+        const allowedKeys = {
             37: 'left',
             38: 'up',
             39: 'right',
