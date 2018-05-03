@@ -40,10 +40,11 @@ class Enemy {
     
     // check for collisions with the player
     collisionCheck() {
-        // check if the x coordinate of the enemy is greater than the player x coordinate minus half of the player width,
-        // and the x coordinate of the enemy is less than the x coordinate of the player minus half of the player width,
-        // and the y coordinate of the enemy is greater than the player y coordinate minus half of the player height,
-        // and the y coordinate of the enemy is less than the player y coordinate plus half of its height
+        // check if: 
+        // 1) the x coordinate of the enemy is greater than the player x coordinate minus half of the player width,
+        // 2) the x coordinate of the enemy is less than the x coordinate of the player minus half of the player width,
+        // 3) the y coordinate of the enemy is greater than the player y coordinate minus half of the player height,
+        // 4) the y coordinate of the enemy is less than the player y coordinate plus half of its height
         if ( this.posX > player.posX - 50.5 && this.posX < player.posX + 50.5 && this.posY > player.posY -41.5 && this.posY < player.posY + 41.5 ) {
             // move the player to the starting position
             player.toStartPosition();
@@ -207,13 +208,9 @@ class Player {
 
 // the game class handle the creation of player and enemies objects, and game start and restart
 class Game {
-    constructor() {
-        // at Game object creation the init method is run 
-        this.init();
-    }
 
-    // initialize the game
-    init() {
+    // initialize the game at object creation
+    constructor() {
         // instantiate the player object
         const player = new Player;
         // instantiate the three enemies
@@ -242,8 +239,13 @@ function randomRange( min, max ) {
     return Math.floor( Math.random() * ( max - min ) ) + min;
 }
 
+
+// game initialization
+
+
+// install event listeners
 // add event listener to the page for key input
-function addEventListeners() {
+(() => {
     document.addEventListener( 'keyup', function( e ) {
         e.preventDefault();
         const allowedKeys = {
@@ -254,14 +256,7 @@ function addEventListeners() {
         };
         player.handleInput( allowedKeys[ e.keyCode ] );
     } );
-}
-
-
-// game initialization
-
-
-// install event listeners
-addEventListeners();
+})();
 
 // start the game
 let game = new Game;
