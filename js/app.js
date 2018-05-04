@@ -53,7 +53,7 @@ class Enemy {
     
     // check if the enemy have moved out of the game
     outOfScreenCheck() {
-        if ( this.posX > 585 ) {
+        if ( this.posX > 900 ) {
             this.restart();
         }
     }
@@ -81,7 +81,7 @@ class Player {
     constructor() {
         // fixed starting position
         this.startPositionY = 374;
-        this.startPositionX = 202;
+        this.startPositionX = 404;
         this.posY = this.startPositionY;
         this.posX = this.startPositionX;
         // load player image
@@ -142,8 +142,8 @@ class Player {
     
     // move the player to the starting position
     toStartPosition() {
-        this.posY = 374;
-        this.posX = 202;
+        this.posY = this.startPositionY;
+        this.posX = this.startPositionX;
     }
 
     // check if the player is going to move offscreen,
@@ -169,9 +169,9 @@ class Player {
             break;
         }
         case 'right': {
-            if ( this.posX < 404 ) {
+            if ( this.posX < 808 ) {
                 return true;
-            } else if ( this.posX > 404 ) {
+            } else if ( this.posX > 808 ) {
                 return false;
             }
             break;
@@ -201,6 +201,7 @@ class Player {
     // at victory, reset the game
     win() {
         game = new Game;
+        
     }
 
 }
@@ -211,7 +212,6 @@ class Game {
 
     // initialize the game at object creation
     constructor() {
-        // instantiate the player object
         const player = new Player;
         // instantiate the three enemies
         const myFirstEnemy = new Enemy( randomRange( -200, -1 ), 50 );
@@ -223,7 +223,7 @@ class Game {
         // assign the enemies array and the player object to a global variable,
         // in this way the game engine can access them
         window.allEnemies = allEnemies;
-        window.player = player;  
+        window.player = player;
     }
 }
 
