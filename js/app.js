@@ -410,13 +410,13 @@ class Game {
         // during game, display level number, life, scores and message
         // display life 
         if (level.life >= 0) {
-            ctx.drawImage( Resources.get( 'images/heart.png' ), 850, 60, 40,40 );
+            ctx.drawImage( Resources.get( 'images/Heart.png' ), 850, 60, 40,40 );
         }
         if (level.life >= 1) {
-            ctx.drawImage( Resources.get( 'images/heart.png' ), 800, 60, 40,40 );
+            ctx.drawImage( Resources.get( 'images/Heart.png' ), 800, 60, 40,40 );
         }
         if (level.life >= 2) {
-            ctx.drawImage( Resources.get( 'images/heart.png' ), 750, 60, 40,40 );
+            ctx.drawImage( Resources.get( 'images/Heart.png' ), 750, 60, 40,40 );
         }
         // display level
         ctx.fillStyle = '#66FF66';
