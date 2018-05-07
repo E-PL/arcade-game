@@ -79,7 +79,6 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -93,7 +92,13 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
+        
         player.update();
+
+        // add collectibles update
+        allGems.forEach(function(gem) {
+            gem.update();
+        });
     }
 
     /* This function initially draws the "game level", it will then call
@@ -154,6 +159,14 @@ var Engine = (function(global) {
         });
 
         player.render();
+
+        // add collectibles rendering
+        allGems.forEach(function(gem) {
+            gem.render();
+        });
+
+        // add game UI rendering
+        game.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -173,7 +186,15 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-princess-girl.png',
+        'images/char-pink-girl.png',
+        'images/heart.png',
+        'images/Gem Green.png',
+        'images/Gem Blue.png',
+        'images/Gem Orange.png',
     ]);
     Resources.onReady(init);
 
